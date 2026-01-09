@@ -26,7 +26,7 @@ const styles = StyleSheet.create({
   tabBar: {
     backgroundColor: "#ffffff",
     borderRadius: 40,
-    marginHorizontal: 12,
+    marginHorizontal: 10,
     padding: 2,
     marginTop: 16,
     elevation: 0,
@@ -45,9 +45,5 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: "600",
     textTransform: "none",
-  },
-
-  screen: {
-    
   },
 });
