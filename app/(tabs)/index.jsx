@@ -3,7 +3,7 @@ import React from "react";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
 import { SafeAreaView } from "react-native-safe-area-context";
 import AvailabilityTabs from "../../components/AvailabilityTabsNavigator ";
-import Categories from "../../components/Categories";
+
 export default function Index() {
   return (
     <SafeAreaView style={styles.container}>
@@ -27,7 +27,6 @@ export default function Index() {
       </View>
       <View style={{ flex: 1 }}>
         <AvailabilityTabs />
-        <Categories />
       </View>
 
     </SafeAreaView>
