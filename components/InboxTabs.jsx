@@ -2,8 +2,10 @@ import { StyleSheet } from "react-native";
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
 import All from "../components/All";
 import Unread from "../components/Unread";
+
 const Tab = createMaterialTopTabNavigator();
-export default function InboxTabs() {
+
+export default function InboxTabs({ data, onRead }) {
   return (
     <Tab.Navigator
       screenOptions={{
@@ -16,8 +18,11 @@ export default function InboxTabs() {
         tabBarPressOpacity: 1,
       }}
     >
-      <Tab.Screen name="All" component={All} />
-      <Tab.Screen name="Unread" component={Unread} />
+      <Tab.Screen name="All">{() => <All data={data} />}</Tab.Screen>
+
+      <Tab.Screen name="Unread">
+        {() => <Unread data={data} onRead={onRead} />}
+      </Tab.Screen>
     </Tab.Navigator>
   );
 }

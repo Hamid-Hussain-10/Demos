@@ -2,10 +2,21 @@ import { View, Text, StyleSheet, Pressable } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
 import { useRouter } from "expo-router";
+import { useState } from "react";
+
 import InboxTabs from "../../components/InboxTabs";
+import { notifications } from "../../components/data";
 
 export default function Inbox() {
   const router = useRouter();
+
+  const [data, setData] = useState(notifications);
+
+  const markAsRead = (id) => {
+    setData((prev) =>
+      prev.map((item) => (item.id === id ? { ...item, read: true } : item)),
+    );
+  };
 
   return (
     <LinearGradient
@@ -13,7 +24,7 @@ export default function Inbox() {
       locations={[0.1, 1]}
       style={{ flex: 1 }}
     >
-       
+      {/* Header */}
       <View style={styles.headContainer}>
         <Pressable style={styles.icon} onPress={() => router.push("/")}>
           <FontAwesome name="angle-left" size={22} color="#000" />
@@ -25,15 +36,14 @@ export default function Inbox() {
           <FontAwesome name="ellipsis-v" size={20} color="#1d1c1c" />
         </Pressable>
       </View>
-      <InboxTabs/>
+
+      {/* Tabs */}
+      <InboxTabs data={data} onRead={markAsRead} />
     </LinearGradient>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    paddingBottom: 20,
-  },
   headContainer: {
     paddingTop: 50,
     paddingBottom: 12,

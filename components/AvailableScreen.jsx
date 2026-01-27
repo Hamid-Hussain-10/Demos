@@ -62,7 +62,6 @@ export default function AvailableScreen() {
   );
 }
 
-/* ---------------- STYLES ---------------- */
 
 const styles = StyleSheet.create({
   gradient: {
